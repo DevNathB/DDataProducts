@@ -1,1 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Main Sequence Stellar Explorer</title>
+  <meta name="description" content="">
+  <meta name="author" content="N.B.">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  <h2>Main Sequence</h2>
+  <h2>Stellar Explorer</h2>
 
+<p><img src="assets/img/stars.jpg" style="width:304px;height:228px;"></p>
+
+<h2>ShinyApp Pitch</h2>
+
+</section>
+<section class='' data-state='' id='slide-2'>
+  <h2>The Main Sequence</h2>
+  
+<div style='float:left;width:48%;' class='centered'>
+  <ul class = "build incremental">
+<li><p>90% of observed stars lie on the Main Sequence. Stars spend most of their life here before evolving off the sequence. It corresponds to the period when stars burn hydrogen to helium in their cores.</p></li>
+<li><p>Once a significant amount of hydrogen in the core has been consumed, stars then begin to evolve into more luminous stars.</p></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/img/hr_radius.png" style="float:right;width:500px;"></p>
+
+</div>
+<div>
+  
+</div>
+</section>
+<section class='' data-state='' id='slide-3'>
+  <h2>The Main Sequence</h2>
+  
+<div style='float:left;width:48%;' class='centered'>
+  <ul class = "build incremental">
+<li><p>When stars lie on the main sequence, we can estimate their mass (M), radius (R) and luminosity (L, energy emitted) from their surface temperature. </p></li>
+<li><p>This is not so easily done once the stars begin to evolve.</p></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/img/hr_radius.png" style="float:right;width:500px;"></p>
+
+</div>
+<div>
+  
+</div>
+</section>
+<section class='' data-state='' id='slide-4'>
+  <h3>ShinyApp: The Main Sequence Explorer</h3>
+  <p><a href="https://devnathb.shinyapps.io/Main_Sequence_Stellar_Explorer">Link to ShinyApp: The Main Sequence Explorer</a></p>
+
+<ul class = "build incremental">
+<li><p>The app enables the user to explore the main sequence, by selecting a stellar temperature. </p></li>
+<li><p>The position of the star is displayed on the main sequence.</p></li>
+<li><p>The app does this by fitting a model to the stellar data set and predicting the value of L given the user&#39;s input temperature</p></li>
+<li><p>The star&#39;s mass and radius are calculated in solar units, and the results are displayed below the plot.</p></li>
+<li><p>This allows the user to explore the relationship between a star&#39;s temperature, mass, radius and luminosity (energy emitted by the star). </p></li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-5'>
+  <h3>ShinyApp: Example calculations</h3>
+  <ul class = "build incremental">
+<li><p>Luminosity and Radius can be related to the temperature T\(_{\rm eff}\) by the Stefan–Boltzmann law: \(L = 4\pi\sigma R^{2}T_{\rm eff}^{4}\) </p></li>
+<li><p>Mass &amp; Radius are related by: \(R = M^{0.738}\) </p></li>
+</ul>
+
+<pre><code class="r">#The Sun, note: all units are solar, i.e. 1 = 1 solar radii, or 1 solar mass
+teff &lt;- 5779.6
+lum &lt;- 1.0
+radius &lt;- sqrt(lum*((5779.6/teff)^4))
+mass &lt;- radius^1.355
+c(mass,radius)
+</code></pre>
+
+<pre><code>## [1] 1 1
+</code></pre>
+
+<pre><code class="r">#Pi Andromedae A
+teff &lt;- 16400
+lum &lt;- 800
+radius &lt;- sqrt(lum*((5779.6/teff)^4))
+mass &lt;- radius^1.355
+c(mass,radius)
+</code></pre>
+
+<pre><code>## [1] 5.487312 3.512795
+</code></pre>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'default', 
+    transition: Reveal.getQueryHash().transition || 'default', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: 'libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: 'libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: 'libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: 'libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> -->
+<script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>

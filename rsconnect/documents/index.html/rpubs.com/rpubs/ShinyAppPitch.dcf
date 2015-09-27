@@ -1,0 +1,7 @@
+name: ShinyAppPitch
+account: rpubs
+server: rpubs.com
+bundleId:
+        https://api.rpubs.com/api/v1/document/113251/0229f9d0f5a1470781b0cafab6a0f5e5
+url: http://rpubs.com/publish/claim/113251/567d73d0a9e84acb99ef00c975d4e2a8
+when: 1443365968.69875
